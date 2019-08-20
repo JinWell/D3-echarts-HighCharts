@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/normalize.css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+
+    <!-- js -->
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/node_modules/echarts/dist/echarts.js"></script>
+    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="/js/source/template1.js"></script>
+    <script type="text/javascript" src="/node_modules/d3/dist/d3.js"></script>
+    <script type="text/javascript" src="/js/source/base.js"></script>
+
+    <script>
+        $(function () {
+
+            var data = [{
+                    value: "ID号",
+                    type: "label"
+                },
+                {
+                    value: "201900227",
+                    type: "text"
+                },
+                {
+                    value: "联系电话",
+                    type: "label"
+                },
+                {
+                    value: "13589642158",
+                    type: "text"
+                },
+                {
+                    value: "训练时间",
+                    type: "label"
+                },
+                {
+                    value: "2019-12-12--16:58",
+                    type: "text"
+                },
+                {
+                    value: "信息",
+                    type: "label"
+                },
+                {
+                    value: "全香菇最靓的仔",
+                    type: "text"
+                }
+            ];
+
+            bindLeftData(data);
+
+
+            var fx = [{
+                Icon: "fa-clock-o",
+                Name: "运动总时间",
+                Value: "22分38秒"
+            }, {
+                Icon: "fa-line-chart",
+                Name: "运动总长度",
+                Value: "64.17米"
+            }, {
+                Icon: "fa-tachometer",
+                Name: "运动速度",
+                Value: "6.92厘米/秒"
+            }, {
+                Icon: "fa-eercast",
+                Name: "总能量消耗",
+                Value: "4.65千卡"
+            }, {
+                Icon: "fa-blind",
+                Name: "痉挛次数",
+                Value: "0"
+            }];
+
+            bindLeftAnalysis(fx);
+
+            gradeCharts();
+
+            sportCharts();
+
+            percentageofSports();
+
+            //ajax请求数据
+            ajaxPost("http://192.168.0.51:9013/api/Screen/GetAllHospital", null, function(data, state, xhr) {
+                debugger
+            }, function (error) {
+                alert('失败');
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row maxHeight">
+            <div class="col-lg-2 col-sm-12 leftContainer">
+                <div>
+                    <span class="fa-stack fa-lg fa-5x">
+                        <i class="fa fa-user-o fa-stack-1x" aria-hidden="true"></i>
+                        <i class="fa fa-square-o fa-stack-2x" style="color: #888691;"></i>
+                    </span>
+
+                    <span id="pat">
+                        <span id="pat_name">{{Name}}</span>
+                        <span id="pat_sex">{{Sex}}</span>
+                    </span>
+                </div>
+                <ul id="leftBaseInfo">
+                    <li v-for="item in items">
+                        <label class="one" v-if="item.type=='label'">{{item.value}}</label>
+                        <label class="two" v-else>{{item.value}}</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-10 col-sm-12 rightContainer">
+                <div class="row rightContainer_top" style="overflow: hidden">
+                    <div class="col-lg-3 col-sm-12">
+                        <span>
+                            <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+                        </span>
+
+                        <span>
+                            <label style="font-weight: bold;">目标达成:</label>
+                            <span>195</span>
+                        </span>
+
+                        <p>
+                            <label style="font-weight: bold;">本次得分:</label>
+                            <span class="grade">1916分</span>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12" style="border-left: 3px solid #208DC7;">
+                        <div style="margin-top: 10px;">
+                            <button class="basebotton">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                训练参数
+                            </button>
+                            <br />
+                            &nbsp;
+                            <span class="fa-stack fa-lg" style="font-size:50px;">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #208DC7;"></i>
+                                <i class="fa fa-hand-pointer-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                            </span>
+                            <br />
+                            <span style="font-weight: bold;font-size:25px;">&nbsp;&nbsp;助力运动</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-12 rightContainer_top_right">
+
+                        <div class="rightContainer_top_right_item">
+                            <i class="fa fa-map-marker fixSize" aria-hidden="true"></i>
+                            <br />
+                            <span class="itemText">&nbsp;&nbsp;运动轨迹</span>
+                            <br />
+                            <i class="fa fa-globe fixSize" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="rightContainer_top_right_item" style="margin-left:10%;">
+                            <i class="fa fa-life-ring fixSize" style="font-size:40px !important;margin-top:3px;"
+                                aria-hidden="true"></i>
+                            <br />
+                            <span class="itemText">&nbsp;&nbsp;助力运动</span>
+                            <br />
+                            <div
+                                style="height:50px;background:#d2d0da;position:relative;width:80%;margin-left:10%;bottom:10px;margin-top:17px;">
+                                <div class="i3item">
+                                    中
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row rightContainer_bottom">
+                    <div class="row" style="width: 100%;margin: 15px;">
+                        <div class="col-lg-3 col-sm-12">
+                            <button class="basebotton">
+                                <span class="basebottonText">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                    结果分析
+                                </span>
+                            </button>
+
+                            <ul class="rightContainer_bottom_ul" id="rightContainer_bottom_li">
+                                <li v-for="item in items">
+                                    <span style="position: relative;">
+                                        <div class="square"></div>
+                                        <div class="baseli">
+                                            <span class="fa-stack fa-lg" style="font-size:50px;">
+                                                <i class="fa fa-square fa-stack-2x" style="color: #208DC7;"></i>
+                                                <i class="fa fa-stack-1x fa-inverse" v-bind:class="item.Icon"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <span class="basespan">
+                                                <span class="title">{{item.Name}}</span>
+                                                <span class="value">{{item.Value}}</span>
+                                            </span>
+                                        </div>
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-9 col-sm-12">
+                            <div class="row" style="height: 50%;">
+                                <div class="col-lg-6 col-md-6">
+                                    <div id="echart_gradeRecord" class="myEchars"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div id="echart_sportRecord" class="myEchars"></div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="height: 50%;">
+                                <div class="col-lg-6 col-md-6">
+                                    <div id="echart_Percentageofsports" class="myEchars"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <button class="basebotton" style="position: relative;top:20px;left:30px;">
+                                        <span class="basebottonText">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            备注
+                                        </span>
+                                    </button>
+                                    <textarea style="width:100%;height:80%;padding-top: 30px;" placeholder="相关备注信息"
+                                        disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+html,
+body,
+.container-fluid,
+.maxHeight {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+ul {
+    padding: 10px;
+}
+
+ul li {
+    list-style: none;
+}
+
+.leftContainer {
+    background: rgba(231, 234, 237, 1);
+    height: calc(100%);
+}
+
+.one {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.two {
+    display: inline-block;
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 10px 10px;
+}
+
+#pat {
+    font-weight: bold;
+    display: inline-block;
+}
+
+#pat span {
+    /* display: inline-block; */
+}
+
+.rightContainer_top {
+    height: 20%;
+    border-bottom: 1px solid #8F9499;
+    font-size: 18px;
+}
+
+.rightContainer_bottom {
+    height: 80%;
+    border-bottom: 1px solid #8F9499;
+}
+
+.grade {
+    font-size: 35px;
+    color: #A35324;
+    font-weight: bold;
+}
+
+.fa-connectdevelop {
+    font-size: 140px !important;
+}
+
+.basebotton {
+    color: #208DC7;
+    border: 1px solid #208DC7;
+    background: #fff;
+    height: 40px;
+    padding: 0px 15px;
+    border-radius: 10px;
+}
+
+.rightContainer_top_right>div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rightContainer_top_right_item {
+    border-top: 5px solid #208DC7;
+    border-bottom: 5px solid #208DC7;
+    border-left: 2px solid #A29AA2;
+    border-right: 2px solid #A29AA2;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.fixSize {
+    font-size: 55px !important;
+    color: #208DC7;
+    display: inline-block;
+    padding: 0 30px;
+    margin-left: 10%;
+}
+
+.i3item {
+    height: 30px;
+    background: #208DC7;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    margin-left: 25%;
+}
+
+.itemText {
+    display: inline-block;
+    margin: 10px 20px;
+}
+
+.basebottonText {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.basespan {
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.basespan span {
+    display: inline-block;
+    width: 100%;
+}
+
+.rightContainer_bottom_ul li span {
+    display: inline-block;
+}
+
+.square{
+    height:80px;
+    width: 80px;
+    border: 1px solid #208dc7;
+}
+ 
+.baseli{
+    margin: -60px 0 0 18px;
+}
+
+.myEchars{
+width:calc(100%);
+height:calc(100%); 
+}
+
+
+@media screen and (max-width: 600px) {  
+    .rightContainer_top{
+       height: 100%;
+        } 
+
+        .leftContainer{
+            height: initial;
+        }
+
+        .row{
+            display: initial !important;
+        }
+
+        html, body, .container-fluid, .maxHeight{
+            overflow:auto;
+        }
+
+  }
