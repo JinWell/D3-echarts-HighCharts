@@ -16,3 +16,11 @@ function ajaxPost(url, data, success, error, dataType) {
 function ajaxGet(){
     $.get();
 }
+
+$(function(){
+
+    $("body").niceScroll({
+        cursorwidth:"10px"
+    });
+
+})

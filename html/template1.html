@@ -8,20 +8,21 @@
     <title>Document</title>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/node_modules/normalize.css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.min.css" />
 
     <!-- js -->
-    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/node_modules/echarts/dist/echarts.js"></script>
-    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/node_modules/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="/js/source/template1.js"></script>
-    <script type="text/javascript" src="/node_modules/d3/dist/d3.js"></script>
-    <script type="text/javascript" src="/js/source/base.js"></script>
-
+    <script type="text/javascript" src="../js/plug-ins/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/plug-ins/echarts.js"></script>
+    <script type="text/javascript" src="../js/plug-ins/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/plug-ins/vue.js"></script>
+    <script type="text/javascript" src="../js/source/template1.js"></script>
+    <script type="text/javascript" src="../js/plug-ins/d3.js"></script>
+    <script type="text/javascript" src="../js/source/base.js"></script>
+    <script type="text/javascript" src="../js/plug-ins/jquery.nicescroll/jquery.nicescroll.js"></script>
+  
     <script>
         $(function () {
 
@@ -91,14 +92,7 @@
             sportCharts();
 
             percentageofSports();
-
-            //ajax请求数据
-            ajaxPost("http://192.168.0.51:9013/api/Screen/GetAllHospital", null, function(data, state, xhr) {
-                debugger
-            }, function (error) {
-                alert('失败');
-            });
-
+ 
         });
     </script>
 </head>
