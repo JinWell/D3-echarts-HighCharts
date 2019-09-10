@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../js/plug-ins/d3.js"></script>
     <script type="text/javascript" src="../js/source/base.js"></script>
     <script type="text/javascript" src="../js/plug-ins/jquery.nicescroll/jquery.nicescroll.js"></script>
-  
+
     <script>
         $(function () {
 
@@ -62,7 +62,6 @@
 
             bindLeftData(data);
 
-
             var fx = [{
                 Icon: "fa-clock-o",
                 Name: "运动总时间",
@@ -87,12 +86,33 @@
 
             bindLeftAnalysis(fx);
 
-            gradeCharts();
+            //柱状图数据模型
+            var data = {
+                Title: "测试数据",
+                Lengend: ["标识"],
+                XAxis: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                YAxis: [5, 20, 36, 10, 10, 20]
+            };
 
-            sportCharts();
+            bindEcharts(echart_gradeRecord, data);
 
             percentageofSports();
- 
+
+            var lineData = [];
+
+            for (let index = 0; index < 100; index++) {
+                var o = {
+                    x: 0,
+                    y: 0
+                }; 
+                lineData.push(o);
+                o.x = randomNum(0, 100);
+                o.y = randomNum(0, 100);
+                lineData.push(o);
+            }
+
+            drawPathSVG("#echart_sportRecord", lineData, '运动轨迹图');
+
         });
     </script>
 </head>
@@ -217,6 +237,7 @@
                                     <div id="echart_gradeRecord" class="myEchars"></div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
+                                    <p class="name"></p>
                                     <div id="echart_sportRecord" class="myEchars"></div>
                                 </div>
                             </div>

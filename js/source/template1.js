@@ -80,8 +80,7 @@ function sportCharts(){
             type: 'bar',
             data: [5, 20, 36, 10, 10, 20]
         }]
-    };
-  
+    }; 
     myChart.setOption(option); 
  }
 
@@ -110,7 +109,6 @@ function percentageofSports(){
             type: 'bar',
             data: [5, 20, 36, 10, 10, 20]
         }]
-    };
-  
+    }; 
     myChart.setOption(option); 
  }
